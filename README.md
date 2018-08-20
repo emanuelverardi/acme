@@ -2,4 +2,4 @@
 ACME limited
 
 ## Database Structure
-![Alt text](resources/assets/images/database.png?raw=true "Title")
+![Alt text](resources/assets/images/database.png?raw=true "Database Structure")

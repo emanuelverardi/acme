@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSimpleQuestionsTable extends Migration
+class CreateAnswerTypeMetadataTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateSimpleQuestionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('simple_questions', function (Blueprint $table) {
+        Schema::create('answer_type_metadata', function (Blueprint $table) {
             $table->increments('id');
-            $table->text('question_text');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -27,6 +27,6 @@ class CreateSimpleQuestionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('simple_questions');
+        Schema::dropIfExists('answer_type_metadata');
     }
 }
