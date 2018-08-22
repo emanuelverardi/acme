@@ -22,5 +22,8 @@ ACME limited
 ------- sidebar.blade.php
 ```
 
+## System Service Structure
+![Alt text](resources/assets/images/service-architecture.png?raw=true "Database Structure")
+
 ## Database Structure
 ![Alt text](resources/assets/images/database.png?raw=true "Database Structure")
