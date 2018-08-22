@@ -1,0 +1,11 @@
+body{
+    color: $font-color;
+}
+
+
+// Logo link
+a.link-logo:hover, a.link-logo:visited, a.link-logo:link, a.link-logo:active {
+    text-decoration: none;
+    color: $font-color;
+    font-weight: bold;
+}

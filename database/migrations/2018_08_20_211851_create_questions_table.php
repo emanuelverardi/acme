@@ -15,14 +15,13 @@ class CreateQuestionsTable extends Migration
     {
         Schema::create('questions', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('simple_question_id');
+            $table->string('question_text');
             $table->unsignedInteger('answer_structure_id');
             $table->unsignedInteger('answer_type_metadata_id')->nullable();
             $table->boolean('is_mandatory')->default(0);
             $table->boolean('is_multiple_choice')->default(0);
             $table->timestamps();
 
-            $table->foreign('simple_question_id')->references('id')->on('simple_questions');
             $table->foreign('answer_structure_id')->references('id')->on('answer_structures');
             $table->foreign('answer_type_metadata_id')->references('id')->on('answer_type_metadata');
         });

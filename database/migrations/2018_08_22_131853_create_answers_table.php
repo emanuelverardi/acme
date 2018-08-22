@@ -15,11 +15,11 @@ class CreateAnswersTable extends Migration
     {
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_question_id');
+            $table->unsignedInteger('survey_question_id');
             $table->unsignedInteger('answer_type_metadata_item_id');
             $table->timestamps();
 
-            $table->foreign('user_question_id')->references('id')->on('user_questions');
+            $table->foreign('survey_question_id')->references('id')->on('survey_question');
             $table->foreign('answer_type_metadata_item_id')->references('id')->on('answer_type_metadata_items');
         });
     }

@@ -11,6 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'IndexController@index')->name('home');
+
+Auth::routes();
+
+/*
+|--------------------------------------------------------------------------
+| Control Panel Routes
+|--------------------------------------------------------------------------
+*/
+Route::group(['prefix' => '/controlpanel', 'namespace' => 'ControlPanel', 'middleware' => ['minifyHtml', 'admin']], function () {
+
+    Route::get('/dashboard', 'DashboardController@index');
+
 });
+
+Route::group(['prefix' => '/user-response', 'namespace' => 'UserResponse', 'middleware' => ['auth', 'minifyHtml']],
+function () {
+
+    Route::get('/', 'UserResponseController@index');
+
+});
+

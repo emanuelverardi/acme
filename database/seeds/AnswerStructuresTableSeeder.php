@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
-class AnswerStructures extends Seeder
+class AnswerStructuresTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
