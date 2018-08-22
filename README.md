@@ -5,21 +5,23 @@ ACME limited
 ```
 - app
 -- views
---- layouts
-------- admin.blade.php
-------- admin-sidebar.blade.php
-------- default.blade.php
-------- default-sidebar.blade.php
---- pages
-------- home.blade.php
-------- about.blade.php
-------- projects.blade.php
-------- contact.blade.php
+--- auth
+------- login.blade.php
+------- register.blade.php
+--- controlpanel
+------- index.blade.php
 --- includes
+------- footer.blade.php
+------- footer-scripts.blade.php
 ------- head.blade.php
 ------- header.blade.php
-------- footer.blade.php
-------- sidebar.blade.php
+------- header-controlpanel.blade.php
+--- layouts
+------- app.blade.php
+------- controlpanel.blade.php
+--- user-response
+------- index.blade.php
+--- index.php (Landing Page)
 ```
 
 ## System Service Structure
