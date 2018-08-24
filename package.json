@@ -22,7 +22,6 @@
     "vue": "^2.5.7"
   },
   "dependencies": {
-    "datatables": "^1.10.18",
-    "formvalidation": "^0.6.2-dev"
+    "datatables": "^1.10.18"
   }
 }
