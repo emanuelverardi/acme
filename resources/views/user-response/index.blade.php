@@ -21,3 +21,9 @@
     </div>
 </div>
 @endsection
+
+@push('css')
+@endpush
+
+@push('javascript')
+@endpush

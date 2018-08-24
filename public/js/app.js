@@ -13694,8 +13694,12 @@ module.exports = __webpack_require__(36);
 
 /***/ }),
 /* 11 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controlpanel_dashboard__ = __webpack_require__(42);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controlpanel_questions__ = __webpack_require__(41);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13705,19 +13709,13 @@ module.exports = __webpack_require__(36);
 
 __webpack_require__(12);
 
-//window.Vue = require('vue');
+// Controlpanel Dashboard Scripts
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+window.Dashboard = __WEBPACK_IMPORTED_MODULE_0__controlpanel_dashboard__["a" /* default */];
 
-//Vue.component('example-component', require('./components/ExampleComponent.vue'));
+// Controlpanel Question Scripts
 
-// const app = new Vue({
-//     el: '#app'
-// });
+window.Questions = __WEBPACK_IMPORTED_MODULE_1__controlpanel_questions__["a" /* default */];
 
 /***/ }),
 /* 12 */
@@ -35954,6 +35952,268 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 37 */,
+/* 38 */,
+/* 39 */,
+/* 40 */,
+/* 41 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Javascript Class to handle the Controlpanel Question
+ */
+var Questions = function () {
+    function Questions(params) {
+        _classCallCheck(this, Questions);
+
+        this.params = params;
+        this.initDatatable();
+        this.formValidator();
+        this.startAnswerTypeListener();
+        this.populateAnswerStructures();
+        this.startOptionMetadata();
+    }
+
+    _createClass(Questions, [{
+        key: 'initDatatable',
+        value: function initDatatable() {
+
+            // Edit record
+            $('#questions-table').on('click', 'a.editor_edit', function (e) {
+                e.preventDefault();
+
+                Questions.resetFormCreateQuestionModal();
+
+                var id = $(this).closest('tr').children('td:first').text();
+
+                if (parseInt(id) > 0) {
+                    /**
+                     * Get all information from ajax
+                     */
+                    $.ajax({
+                        url: "/api/v1/questions/get/" + id,
+                        type: "get",
+                        dataType: "json",
+                        success: function success(data) {
+                            Questions.populateQuestionForm(data);
+                        },
+                        error: function error(err) {}
+                    });
+                }
+
+                $('#id').val($(this).closest('tr').children('td:first').text());
+            });
+
+            // Delete record
+            $('#questions-table').on('click', 'a.editor_remove', function (e) {
+                e.preventDefault();
+                $('#questionId').val($(this).closest('tr').children('td:first').text());
+            });
+
+            $('#questions-table').DataTable({
+                "ajax": this.params.questionListApiUrl,
+                "columns": [{ "data": "id" }, { "data": "question_text" }, { "data": "answer_structure.structure" }, { "data": "answer_type_metadata_id" }, { "data": "is_mandatory" }, { "data": "created_at" }, { "data": "updated_at" }, {
+                    data: null,
+                    className: "center",
+                    defaultContent: '<a href="" data-toggle="modal" data-target="#createQuestionModal"' + ' class="editor_edit">Edit</a> / <a href=""' + ' data-toggle="modal"' + ' data-target="#deleteQuestionModal" class="editor_remove">Delete</a>'
+                }]
+            });
+        }
+    }, {
+        key: 'populateAnswerStructures',
+        value: function populateAnswerStructures() {
+            $.ajax({
+                url: "/api/v1/answers/structures/list",
+                type: "get",
+                dataType: "json",
+                success: function success(data) {
+                    $.each(data, function (i, v) {
+                        $('#answer_structure_id').append('<option value="' + v.id + '">' + v.structure + '</option>');
+                    });
+                },
+                error: function error(err) {}
+            });
+        }
+    }, {
+        key: 'startAnswerTypeListener',
+        value: function startAnswerTypeListener() {
+
+            $('#answer_structure_id').change(function () {
+                // case is drop-down
+                if ($.inArray($(this).val(), ['4', '5']) != -1) {
+                    $('.entry').show();
+                    $('.entry').find('input').prop('required', true);
+                } else {
+                    $('.entry').hide();
+                    $('.entry').find('input').removeAttr('required');
+                }
+            });
+        }
+    }, {
+        key: 'startOptionMetadata',
+        value: function startOptionMetadata() {
+
+            $('#createQuestionModal').on('shown.bs.modal', function (e) {});
+
+            $(document).on('click', '.btn-add', function (e) {
+                e.preventDefault();
+                var controlForm = $('.controls form:first'),
+                    currentEntry = $(this).parents('.entry:first'),
+                    newEntry = $(currentEntry.clone()).appendTo(controlForm);
+
+                newEntry.find('input').val('');
+                controlForm.find('.entry:not(:last) .btn-add').removeClass('btn-add').addClass('btn-remove').removeClass('btn-success').addClass('btn-danger').html('Remove');
+            }).on('click', '.btn-remove', function (e) {
+                $(this).parents('.entry:first').remove();
+
+                e.preventDefault();
+                return false;
+            });
+        }
+    }, {
+        key: 'formValidator',
+        value: function formValidator() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+
+                        // Call ajax form Submit
+                        Questions.submitForm();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
+        }
+    }], [{
+        key: 'populateQuestionForm',
+        value: function populateQuestionForm(data) {
+            $("#id").val(data.question.id);
+            $("#answer_type_metadata_id").val(data.question.answer_type_metadata_id);
+            $('#question_text').val(data.question.question_text);
+            $('#is_mandatory').prop('checked', data.question.is_mandatory == 1);
+            $('#answer_structure_id').val(data.question.answer_structure_id);
+
+            if ($.inArray(data.question.answer_structure_id, [4, 5]) != -1) {
+                $('.entry').show();
+                $('.entry').find('input').prop('required', true);
+            } else {
+                $('.entry').hide();
+                $('.entry').find('input').removeAttr('required');
+            }
+
+            // Populate the Metadata
+            if (data.question.answer_type_metadata) {
+                $.each(data.question.answer_type_metadata.items, function (i, v) {
+                    $('input[name="answer_metadata[]"]:nth(' + i + ')').val(v.value);
+                    if (i < data.question.answer_type_metadata.items.length - 1) {
+                        $('.btn-add').click();
+                    }
+                });
+            }
+        }
+    }, {
+        key: 'submitForm',
+        value: function submitForm() {
+
+            $.ajax({
+                type: "post",
+                url: '/api/v1/questions/create',
+                data: $("#questionForm").serialize(), // serializes the form's elements.
+                success: function success(data) {
+                    $('#createQuestionModal').modal('toggle');
+                    $('#questions-table').DataTable().ajax.reload();
+
+                    if (data.status) {
+                        $('.notifications').html('<div class="alert alert-success alert-dismissible fade show"' + ' role="alert">\n' + '<div class="message">New Question added/updated successfully.</div>\n' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' + '<span aria-hidden="true">&times;</span>\n' + '</button>\n' + '</div>');
+                    } else {
+                        $('.notifications').html('<div class="alert alert-danger alert-dismissible fade show"' + ' role="alert">\n' + '<div class="message">Error adding question.</div>\n' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' + '<span aria-hidden="true">&times;</span>\n' + '</button>\n' + '</div>');
+                    }
+                }
+            });
+        }
+    }, {
+        key: 'resetFormCreateQuestionModal',
+        value: function resetFormCreateQuestionModal() {
+            $('#id').val('');
+            $('.btn-remove').parent().parent().remove();
+            $('#questionForm')[0].reset();
+            $('#questionForm').removeClass('was-validated');
+            $('.entry').hide();
+        }
+    }, {
+        key: 'delete',
+        value: function _delete(id) {
+
+            $.ajax({
+                url: "/api/v1/questions/delete/" + id,
+                type: "delete",
+                dataType: "json",
+                success: function success(data) {
+
+                    $('#deleteQuestionModal').modal('toggle');
+                    $('#questions-table').DataTable().ajax.reload();
+
+                    if (data.status) {
+                        $('.notifications').html('<div class="alert alert-success alert-dismissible fade show"' + ' role="alert">\n' + '<div class="message">The question was deleted.</div>\n' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' + '<span aria-hidden="true">&times;</span>\n' + '</button>\n' + '</div>');
+                    } else {
+                        $('.notifications').html('<div class="alert alert-danger alert-dismissible fade show"' + ' role="alert">\n' + '<div class="message">The question could not be deleted.</div>\n' + '<button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' + '<span aria-hidden="true">&times;</span>\n' + '</button>\n' + '</div>');
+                    }
+                },
+                error: function error(err) {}
+            });
+        }
+    }]);
+
+    return Questions;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Questions);
+
+/***/ }),
+/* 42 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Javascript Class to handle the Controlpanel Dashboard
+ */
+var Dashboard = function () {
+    function Dashboard(params) {
+        _classCallCheck(this, Dashboard);
+
+        this.params = params;
+        this.iniDashboard();
+    }
+
+    _createClass(Dashboard, [{
+        key: "iniDashboard",
+        value: function iniDashboard() {
+            console.log("Initializing Dashboard");
+        }
+    }]);
+
+    return Dashboard;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Dashboard);
 
 /***/ })
 /******/ ]);

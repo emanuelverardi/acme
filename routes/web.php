@@ -23,6 +23,7 @@ Auth::routes();
 Route::group(['prefix' => '/controlpanel', 'namespace' => 'ControlPanel', 'middleware' => ['minifyHtml', 'admin']], function () {
 
     Route::get('/dashboard', 'DashboardController@index');
+    Route::get('/questions', 'QuestionController@list');
     Route::get('/question/{questionId}', 'QuestionController@getQuestion');
 
 });

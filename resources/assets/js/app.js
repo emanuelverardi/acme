@@ -7,16 +7,12 @@
 
 require('./bootstrap');
 
-//window.Vue = require('vue');
+// Controlpanel Dashboard Scripts
+import Dashboard from './controlpanel/dashboard';
+window.Dashboard = Dashboard;
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+// Controlpanel Question Scripts
+import Questions from './controlpanel/questions';
+window.Questions = Questions;
 
-//Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-// const app = new Vue({
-//     el: '#app'
-// });

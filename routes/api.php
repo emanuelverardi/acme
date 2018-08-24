@@ -13,6 +13,27 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('api')->prefix('v1')->namespace('Api\V1')->group(function () {
+
+    /**
+     * Question Routes
+     */
+    Route::prefix('questions')->group(function () {
+        Route::get('list', 'QuestionController@list');
+        Route::get('get/{questionId}', 'QuestionController@getQuestionById');
+        Route::post('create', 'QuestionController@updateOrCreate');
+        Route::put('update', 'QuestionController@updateOrCreate');
+        Route::delete('delete/{id}', 'QuestionController@delete');
+    });
+
+
+    /**
+     * Answer Routes
+     */
+    Route::prefix('answers')->group(function () {
+        Route::prefix('structures')->group(function () {
+            Route::get('list', 'AnswerController@getStructures');
+        });
+    });
+
 });

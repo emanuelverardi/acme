@@ -19,7 +19,6 @@ class CreateQuestionsTable extends Migration
             $table->unsignedInteger('answer_structure_id');
             $table->unsignedInteger('answer_type_metadata_id')->nullable();
             $table->boolean('is_mandatory')->default(0);
-            $table->boolean('is_multiple_choice')->default(0);
             $table->timestamps();
 
             $table->foreign('answer_structure_id')->references('id')->on('answer_structures');

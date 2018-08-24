@@ -7,10 +7,15 @@ use App\Http\Controllers\Controller;
 
 class QuestionController extends Controller
 {
-    public function getQuestion($questionId=1)
+    public function list()
+    {
+        return  view('controlpanel.list');
+    }
+
+    public function getQuestion($questionId)
     {
         $userName = Question::getQuestion($questionId);
-        echo $userName ?? "maoee";
+        echo $userName;
 
     }
 

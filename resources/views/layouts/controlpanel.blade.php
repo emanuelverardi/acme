@@ -1,19 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<!doctype html>
+<html lang="en">
 @include('includes.head')
-
 <body>
-    <div id="app">
-
-        @include('includes.header-controlpanel')
-
-        <main class="py-4">
-            @yield('content')
-        </main>
-
-        @include('includes.footer')
-        @include('includes.footer-scripts')
+@include('includes.header-controlpanel')
+<div class="container-fluid">
+    <div class="row">
+    @include('includes.innernav')
+    @yield('content')
     </div>
+</div>
+@include('includes.footer')
+@include('includes.footer-scripts')
 </body>
 </html>
+
