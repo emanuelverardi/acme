@@ -13689,7 +13689,7 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(11);
-module.exports = __webpack_require__(36);
+module.exports = __webpack_require__(39);
 
 
 /***/ }),
@@ -13698,8 +13698,9 @@ module.exports = __webpack_require__(36);
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controlpanel_dashboard__ = __webpack_require__(42);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controlpanel_questions__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controlpanel_dashboard__ = __webpack_require__(36);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controlpanel_questions__ = __webpack_require__(37);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_response_survey__ = __webpack_require__(38);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -13716,6 +13717,10 @@ window.Dashboard = __WEBPACK_IMPORTED_MODULE_0__controlpanel_dashboard__["a" /* 
 // Controlpanel Question Scripts
 
 window.Questions = __WEBPACK_IMPORTED_MODULE_1__controlpanel_questions__["a" /* default */];
+
+// User Survey
+
+window.Survey = __WEBPACK_IMPORTED_MODULE_2__user_response_survey__["a" /* default */];
 
 /***/ }),
 /* 12 */
@@ -35949,16 +35954,38 @@ module.exports = function spread(callback) {
 
 /***/ }),
 /* 36 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Javascript Class to handle the Controlpanel Dashboard
+ */
+var Dashboard = function () {
+    function Dashboard(params) {
+        _classCallCheck(this, Dashboard);
+
+        this.params = params;
+        this.iniDashboard();
+    }
+
+    _createClass(Dashboard, [{
+        key: "iniDashboard",
+        value: function iniDashboard() {
+            console.log("Initializing Dashboard");
+        }
+    }]);
+
+    return Dashboard;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (Dashboard);
 
 /***/ }),
-/* 37 */,
-/* 38 */,
-/* 39 */,
-/* 40 */,
-/* 41 */
+/* 37 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36184,7 +36211,7 @@ var Questions = function () {
 /* harmony default export */ __webpack_exports__["a"] = (Questions);
 
 /***/ }),
-/* 42 */
+/* 38 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -36193,27 +36220,53 @@ var _createClass = function () { function defineProperties(target, props) { for 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Javascript Class to handle the Controlpanel Dashboard
+ * Javascript Class to handle the Survey
  */
-var Dashboard = function () {
-    function Dashboard(params) {
-        _classCallCheck(this, Dashboard);
+var Survey = function () {
+    function Survey(params) {
+        _classCallCheck(this, Survey);
 
         this.params = params;
-        this.iniDashboard();
+        this.initSurvey();
+        this.formValidator();
     }
 
-    _createClass(Dashboard, [{
-        key: "iniDashboard",
-        value: function iniDashboard() {
-            console.log("Initializing Dashboard");
+    _createClass(Survey, [{
+        key: 'initSurvey',
+        value: function initSurvey() {}
+    }, {
+        key: 'formValidator',
+        value: function formValidator() {
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.getElementsByClassName('needs-validation');
+            // Loop over them and prevent submission
+            var validation = Array.prototype.filter.call(forms, function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (form.checkValidity() === false) {
+                        event.preventDefault();
+                        event.stopPropagation();
+                    } else {
+
+                        // Call ajax form Submit
+                        //Survey.submitForm();
+                    }
+
+                    form.classList.add('was-validated');
+                }, false);
+            });
         }
     }]);
 
-    return Dashboard;
+    return Survey;
 }();
 
-/* harmony default export */ __webpack_exports__["a"] = (Dashboard);
+/* harmony default export */ __webpack_exports__["a"] = (Survey);
+
+/***/ }),
+/* 39 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
 
 /***/ })
 /******/ ]);

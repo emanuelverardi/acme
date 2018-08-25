@@ -17,6 +17,9 @@ class DatabaseSeeder extends Seeder
         $this->call(AnswerTypeMetadataTableSeeder::class);
         $this->call(AnswerTypeMetadataItemsTableSeeder::class);
         $this->call(QuestionTableSeeder::class);
+        $this->call(SurveyTableSeeder::class);
+        $this->call(UserSurveyTableSeeder::class);
+        $this->call(SurveyQuestionTableSeeder::class);
 
     }
 }

@@ -15,4 +15,8 @@ window.Dashboard = Dashboard;
 import Questions from './controlpanel/questions';
 window.Questions = Questions;
 
+// User Survey
+import Survey from './user-response/survey';
+window.Survey = Survey;
+
 

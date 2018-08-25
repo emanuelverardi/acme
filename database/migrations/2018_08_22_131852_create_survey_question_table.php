@@ -19,7 +19,7 @@ class CreateSurveyQuestionTable extends Migration
             $table->unsignedInteger('question_id');
 
             $table->foreign('survey_id')->references('id')->on('surveys');
-            $table->foreign('question_id')->references('id')->on('users');
+            $table->foreign('question_id')->references('id')->on('questions');
         });
     }
 

@@ -18,6 +18,11 @@ class RedirectIfAuthenticated
     public function handle($request, Closure $next, $guard = null)
     {
         if (Auth::guard($guard)->check()) {
+
+            if($request->get('r') && !Auth::user()->isAdmin()){
+                $request->session()->flash('error', 'This user is not allowed to access the controlpanel');
+            }
+
             return Auth::user()->isAdmin() ? redirect('/controlpanel/dashboard') : redirect('/user-response/');
         }
 

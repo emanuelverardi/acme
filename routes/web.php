@@ -22,9 +22,29 @@ Auth::routes();
 */
 Route::group(['prefix' => '/controlpanel', 'namespace' => 'ControlPanel', 'middleware' => ['minifyHtml', 'admin']], function () {
 
-    Route::get('/dashboard', 'DashboardController@index');
-    Route::get('/questions', 'QuestionController@list');
-    Route::get('/question/{questionId}', 'QuestionController@getQuestion');
+    Route::get('/dashboard', 'DashboardController@index')->name('Dashboard');
+    Route::get('/questions', 'QuestionController@list')->name('Questions');
+    Route::get('/question/{questionId}', 'QuestionController@getQuestion')->name('Question');
+
+    /**
+     * To be implemented
+     */
+
+    Route::get('/answers', function(){
+        return view('controlpanel.empty');
+    })->name('Answer');
+
+    Route::get('/answer-structures', function(){
+        return view('controlpanel.empty');
+    })->name('Answer Structures');
+
+    Route::get('/answer-metadatas', function(){
+        return view('controlpanel.empty');
+    })->name('Answer Type Metadata');
+
+    Route::get('/users', function(){
+        return view('controlpanel.empty');
+    })->name('Users');
 
 });
 

@@ -29,3 +29,7 @@ ACME limited
 
 ## Database Structure
 ![Alt text](resources/assets/images/database.png?raw=true "Database Structure")
+
+```
+select * from questions a join survey_question b on a.id=b.question_id and b.survey_id=1;
+```

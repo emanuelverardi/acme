@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse pull-right" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a href="{{ url('/controlpanel/questions') }}">All Questions</a>
+                <a href="{{ url('/user-response/') }}">User Area</a>
             </li>
         </ul>
         <ul class="navbar-nav">

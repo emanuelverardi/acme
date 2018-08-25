@@ -1,0 +1,96 @@
+{
+  "_args": [
+    [
+      "datepicker-bootstrap",
+      "/home/emanuel/Sites/acme"
+    ]
+  ],
+  "_from": "datepicker-bootstrap@latest",
+  "_id": "datepicker-bootstrap@1.8.0",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/datepicker-bootstrap",
+  "_nodeVersion": "8.9.1",
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/datepicker-bootstrap-1.8.0.tgz_1517304223587_0.328435089206323"
+  },
+  "_npmUser": {
+    "email": "nascovt@gmail.com",
+    "name": "atatanasov"
+  },
+  "_npmVersion": "5.6.0",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "datepicker-bootstrap",
+    "raw": "datepicker-bootstrap",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "latest",
+    "type": "tag"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/datepicker-bootstrap/-/datepicker-bootstrap-1.8.0.tgz",
+  "_shasum": "3416a5d17c5bf436f9b670a9c5364eb515525179",
+  "_shrinkwrap": null,
+  "_spec": "datepicker-bootstrap",
+  "_where": "/home/emanuel/Sites/acme",
+  "author": {
+    "name": "Atanas Atanasov"
+  },
+  "bugs": {
+    "email": "nascovt@gmail.com"
+  },
+  "dependencies": {
+    "jquery": ">=1.9.1"
+  },
+  "description": "Datepicker by Gijgo.com is a plug-in for the jQuery Javascript library. It is a very fast and extandable tool, and will add advanced interaction controls to any date field. This plugin allows you to create datepickers using bootstrap or material design st",
+  "devDependencies": {
+    "bootstrap": "^3.3.5",
+    "express": "4.13.3",
+    "grunt": "~0.4.5",
+    "grunt-contrib-clean": "^1.0.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jshint": "^0.11.3",
+    "grunt-contrib-uglify": "~0.5.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-text-replace": "^0.4.0"
+  },
+  "directories": {},
+  "dist": {
+    "integrity": "sha512-tUxCqFdaOceQb9o9Hgd8w34cKA6vIp+qrD6hpmpVpjyqwSPs8UJb/4VACkZmMsMH0aYSIHnjkW3FqgywWWYTQQ==",
+    "shasum": "3416a5d17c5bf436f9b670a9c5364eb515525179",
+    "tarball": "https://registry.npmjs.org/datepicker-bootstrap/-/datepicker-bootstrap-1.8.0.tgz"
+  },
+  "homepage": "http://gijgo.com/datepicker",
+  "keywords": [
+    "bootstrap",
+    "bootstrap 4",
+    "datepicker",
+    "gijgo",
+    "javascript",
+    "jquery",
+    "jquery-plugin",
+    "material design",
+    "plugin"
+  ],
+  "license": "MIT",
+  "main": "js/datepicker.js",
+  "maintainers": [
+    {
+      "name": "atatanasov",
+      "email": "nascovt@gmail.com"
+    }
+  ],
+  "name": "datepicker-bootstrap",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.8.0"
+}

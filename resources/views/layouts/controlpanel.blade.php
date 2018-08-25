@@ -2,10 +2,10 @@
 <html lang="en">
 @include('includes.head')
 <body>
-@include('includes.header-controlpanel')
+@include('controlpanel.includes.header-cp')
 <div class="container-fluid">
     <div class="row">
-    @include('includes.innernav')
+    @include('controlpanel.includes.innernav')
     @yield('content')
     </div>
 </div>

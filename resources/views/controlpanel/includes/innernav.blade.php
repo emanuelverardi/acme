@@ -13,6 +13,18 @@
                     All Questions
                 </a>
             </li>
+            <li>
+                <a class="nav-link" href="{{ url('/controlpanel/answers') }}">Answers</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{{ url('/controlpanel/answer-structures') }}">Answer Structures</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{{ url('/controlpanel/answer-metadatas') }}">Answer Type Metadata</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{{ url('/controlpanel/users') }}">Users</a>
+            </li>
         </ul>
     </div>
 </nav>
