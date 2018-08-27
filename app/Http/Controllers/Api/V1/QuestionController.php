@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Services\Question\QuestionFacade as Question;
 use Illuminate\Http\Request;
 use App\Http\Requests\QuestionRequest;
+use App\Http\Requests\QuestionDeleteRequest;
 
 class QuestionController extends Controller
 {
@@ -63,9 +64,11 @@ class QuestionController extends Controller
      * @param $questionId
      * @return \Illuminate\Http\JsonResponse
      */
-    public function delete($questionId)
+    public function delete(QuestionDeleteRequest $request)
     {
-        $question = Question::delete($questionId);
+        $validated = $request->validated();
+
+        $question = Question::delete($request->get('questionId'));
         $status = !empty($question) ? true : false;
         return response()->json(['status' => $status]);
     }
