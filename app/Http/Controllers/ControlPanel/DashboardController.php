@@ -8,7 +8,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        return view('controlpanel.dashboard.index');
+        return view('controlpanel.index');
     }
 
 }
