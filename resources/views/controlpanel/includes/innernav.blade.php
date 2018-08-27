@@ -25,6 +25,9 @@
             <li>
                 <a class="nav-link" href="{{ url('/controlpanel/users') }}">Users</a>
             </li>
+            <li>
+                <a class="nav-link" href="{{ url('/controlpanel/passport') }}">Api Authentication</a>
+            </li>
         </ul>
     </div>
 </nav>

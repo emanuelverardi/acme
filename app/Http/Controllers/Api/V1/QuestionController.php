@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Api\V1;
 use App\Http\Controllers\Controller;
 use App\Services\Question\QuestionFacade as Question;
 use Illuminate\Http\Request;
+use App\Http\Requests\QuestionRequest;
 
 class QuestionController extends Controller
 {
@@ -47,8 +48,10 @@ class QuestionController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateOrCreate(Request $request)
+    public function updateOrCreate(QuestionRequest $request)
     {
+        $validated = $request->validated();
+
         $question = Question::updateOrCreate($request);
         $status = !empty($question) ? true : false;
         return response()->json(['status' => $status, 'question' => $question ]);
