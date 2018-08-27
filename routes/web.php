@@ -24,7 +24,6 @@ Route::group(['prefix' => '/controlpanel', 'namespace' => 'ControlPanel', 'middl
 
     Route::get('/dashboard', 'DashboardController@index')->name('Dashboard');
     Route::get('/questions', 'QuestionController@list')->name('Questions');
-    Route::get('/question/{questionId}', 'QuestionController@getQuestion')->name('Question');
 
     /**
      * To be implemented

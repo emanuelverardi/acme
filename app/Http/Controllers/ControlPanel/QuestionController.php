@@ -12,11 +12,4 @@ class QuestionController extends Controller
         return  view('controlpanel.list');
     }
 
-    public function getQuestion($questionId)
-    {
-        $userName = Question::getQuestion($questionId);
-        echo $userName;
-
-    }
-
 }
