@@ -99,7 +99,15 @@ class QuestionService
      * @return mixed
      */
     public function delete($questionId){
-        return $this->questionRepo->delete($questionId);
+
+        $questionObj = $this->questionRepo->getQuestionById($questionId);
+
+        if(!$questionObj->hasAnyAnswer()){
+            return $this->questionRepo->delete($questionId);
+        }else{
+            return ['status' => false, 'message' => 'This Question cannot be deleted because it have answers.'];
+        }
+
     }
 
 }

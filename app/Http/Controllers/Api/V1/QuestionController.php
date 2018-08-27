@@ -69,8 +69,8 @@ class QuestionController extends Controller
         $validated = $request->validated();
 
         $question = Question::delete($request->get('questionId'));
-        $status = !empty($question) ? true : false;
-        return response()->json(['status' => $status]);
+        $status = !empty($question) && empty($question['message']) ? true : false;
+        return response()->json(['status' => $status, 'meddage' => $question['message'] ?? false]);
     }
 
 }

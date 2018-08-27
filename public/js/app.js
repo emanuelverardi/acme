@@ -50202,6 +50202,7 @@ var Questions = function () {
                 url: "/api/v1/questions/delete/" + id,
                 type: "delete",
                 dataType: "json",
+                data: { questionId: id },
                 success: function success(data) {
 
                     $('#deleteQuestionModal').modal('toggle');

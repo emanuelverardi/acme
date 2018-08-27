@@ -273,6 +273,7 @@ class Questions {
             url: "/api/v1/questions/delete/" + id,
             type: "delete",
             dataType: "json",
+            data: {questionId:id},
             success: function(data){
 
                 $('#deleteQuestionModal').modal('toggle');
