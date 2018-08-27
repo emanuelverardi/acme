@@ -31,6 +31,8 @@ class RedirectIfAuthenticated
                     return redirect('/controlpanel/dashboard');
                 }
             }
+
+            return Auth::user()->isAdmin() ? redirect('/controlpanel/dashboard') : redirect('/user-response/');
         }
 
         return $next($request);
