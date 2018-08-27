@@ -5,6 +5,8 @@ namespace App\Providers;
 use App\Repositories\Question\QuestionInterface;
 use App\Repositories\Question\QuestionRepository;
 use Illuminate\Support\ServiceProvider;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\View;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -15,7 +17,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::share('access_token', Config::get('app.access_token'));
     }
 
     /**

@@ -14298,9 +14298,9 @@ module.exports = Cancel;
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(15);
-__webpack_require__(64);
 __webpack_require__(65);
-module.exports = __webpack_require__(66);
+__webpack_require__(66);
+module.exports = __webpack_require__(67);
 
 
 /***/ }),
@@ -14312,6 +14312,7 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__controlpanel_dashboard__ = __webpack_require__(61);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__controlpanel_questions__ = __webpack_require__(62);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__user_response_survey__ = __webpack_require__(63);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__authApi__ = __webpack_require__(64);
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -14352,6 +14353,10 @@ window.Questions = __WEBPACK_IMPORTED_MODULE_1__controlpanel_questions__["a" /* 
 // User Survey
 
 window.Survey = __WEBPACK_IMPORTED_MODULE_2__user_response_survey__["a" /* default */];
+
+// Controlpanel
+
+window.AuthApi = __WEBPACK_IMPORTED_MODULE_3__authApi__["a" /* default */];
 
 /***/ }),
 /* 16 */
@@ -49919,10 +49924,17 @@ var Dashboard = function () {
 
         this.params = params;
         this.iniDashboard();
+        this.initToken();
     }
 
     _createClass(Dashboard, [{
-        key: "iniDashboard",
+        key: 'initToken',
+        value: function initToken() {
+            var authorization = 'Bearer ' + this.params.access_token.replace(/\"/g, "");
+            $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), 'Authorization': authorization } });
+        }
+    }, {
+        key: 'iniDashboard',
         value: function iniDashboard() {
 
             $.ajax({
@@ -50265,9 +50277,36 @@ var Survey = function () {
 
 /***/ }),
 /* 64 */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+/**
+ * Javascript Class to handle the Controlpanel Dashboard
+ */
+var AuthApi = function () {
+    function AuthApi(params) {
+        _classCallCheck(this, AuthApi);
+
+        this.params = params;
+        this.initToken();
+    }
+
+    _createClass(AuthApi, [{
+        key: 'initToken',
+        value: function initToken() {
+            var authorization = 'Bearer ' + this.params.access_token.replace(/\"/g, "");
+            $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), 'Authorization': authorization } });
+        }
+    }]);
+
+    return AuthApi;
+}();
+
+/* harmony default export */ __webpack_exports__["a"] = (AuthApi);
 
 /***/ }),
 /* 65 */
@@ -50277,6 +50316,12 @@ var Survey = function () {
 
 /***/ }),
 /* 66 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 67 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

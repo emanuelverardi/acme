@@ -50,4 +50,8 @@ window.Questions = Questions;
 import Survey from './user-response/survey';
 window.Survey = Survey;
 
+// Controlpanel
+import AuthApi from './authApi';
+window.AuthApi = AuthApi;
+
 
