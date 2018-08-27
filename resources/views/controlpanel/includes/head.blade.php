@@ -14,5 +14,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/controlpanel.css') }}" rel="stylesheet">
     @stack('css')
 </head>

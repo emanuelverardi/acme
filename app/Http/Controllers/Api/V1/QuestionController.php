@@ -30,6 +30,7 @@ class QuestionController extends Controller
         $question = Question::getQuestion($questionId);
 
         if($question){
+            $question->hasAnswer = $question->hasAnyAnswer();
             $question->answerStructure;
             if($question->answerTypeMetadata){
                 $question->answerTypeMetadata->items;

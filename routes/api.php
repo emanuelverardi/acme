@@ -18,6 +18,13 @@ Route::middleware('api')->prefix('v1')->namespace('Api\V1')->group(function () {
     /**
      * Question Routes
      */
+    Route::prefix('dashboard')->group(function () {
+        Route::get('get-totals', 'DashboardController@getTotals');
+    });
+
+    /**
+     * Question Routes
+     */
     Route::prefix('questions')->group(function () {
         Route::get('list', 'QuestionController@list');
         Route::get('get/{questionId}', 'QuestionController@getQuestionById');

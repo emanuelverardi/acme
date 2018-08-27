@@ -30,4 +30,24 @@ class Question extends Model
     {
         return $this->hasOne('App\Models\AnswerTypeMetadata', 'id', 'answer_type_metadata_id');
     }
+
+    /**
+     * The User that belong to the Question.
+     */
+    public function survey()
+    {
+        return $this->belongsToMany('App\Models\Survey', 'survey_question');
+    }
+
+    /**
+     * The User that belong to the Question.
+     */
+    public function answer()
+    {
+        return $this->hasMany('App\Models\Answer', 'question_id');
+    }
+
+    public function hasAnyAnswer(){
+        return null !== $this->answer()->first();
+    }
 }

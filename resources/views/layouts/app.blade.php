@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
-@include('includes.head')
+@include('user-response.includes.head')
 
 <body>
     <div id="app">
 
-        @include('includes.header')
+        @include('user-response.includes.header')
 
         <main class="py-4 container">
             @yield('content')
         </main>
 
-        @include('includes.footer')
-        @include('includes.footer-scripts')
+        @include('user-response.includes.footer')
+        @include('user-response.includes.footer-scripts')
     </div>
 </body>
 </html>

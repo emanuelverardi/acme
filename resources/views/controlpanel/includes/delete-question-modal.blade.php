@@ -15,6 +15,7 @@
             </div>
             <div class="modal-footer">
                 <input type="hidden" name="questionId" id="questionId">
+                <input type="hidden" name="hasAnswer" id="hasAnswer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" onclick="Questions.delete($('#questionId').val())
 ">Delete</button>

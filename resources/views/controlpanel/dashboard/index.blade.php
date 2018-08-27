@@ -14,7 +14,7 @@
                                 <i class="fa fa-comments fa-5x"></i>
                             </div>
                             <div class="col-xs-9 col-md-9 text-right">
-                                <div class="huge">6</div>
+                                <div class="huge total-questions">0</div>
                                 <div>New Questions!</div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                                 <i class="fa fa-tasks fa-5x"></i>
                             </div>
                             <div class="col-xs-9 col-md-9 text-right">
-                                <div class="huge">0</div>
+                                <div class="huge total-answer">0</div>
                                 <div>New Answers!</div>
                             </div>
                         </div>
@@ -55,11 +55,11 @@
                     <div class="panel-heading">
                         <div class="row">
                             <div class="col-xs-3">
-                                <i class="fa fa-shopping-cart fa-5x"></i>
+                                <i class="fa fa-database fa-5x"></i>
                             </div>
                             <div class="col-xs-9 col-md-9 text-right">
-                                <div class="huge">2</div>
-                                <div>New Users!</div>
+                                <div class="huge total-question-type-metadata">0</div>
+                                <div>New Question Type Metadata!</div>
                             </div>
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                                 <i class="fa fa-support fa-5x"></i>
                             </div>
                             <div class="col-xs-9 col-md-9 text-right">
-                                <div class="huge">2</div>
+                                <div class="huge total-survey">0</div>
                                 <div>Total Surveys!</div>
                             </div>
                         </div>

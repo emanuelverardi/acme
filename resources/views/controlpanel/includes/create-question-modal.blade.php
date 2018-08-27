@@ -46,6 +46,7 @@
                             </div>
                         </div>
                         <input type="hidden" name="id" id="id">
+                        <input type="hidden" name="has_answer" id="has_answer">
                         <input type="hidden" name="answer_type_metadata_id" id="answer_type_metadata_id">
                     </form>
                 </div>

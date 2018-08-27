@@ -1,0 +1,14 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+body{
+    background-color: $ur-body-bg;
+
+    .navbar-laravel{
+        //background-color: $ur-nav-bg;
+    }
+}

@@ -146,6 +146,9 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        App\Providers\AnswerTypeMetadataRepositoryServiceProvider::class,
+        App\Providers\AnswerRepositoryServiceProvider::class,
+        App\Providers\SurveyRepositoryServiceProvider::class,
         App\Providers\QuestionRepositoryServiceProvider::class,
         App\Providers\QuestionServiceProvider::class,
 

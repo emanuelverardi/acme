@@ -44,7 +44,28 @@ class Questions {
         // Delete record
         $('#questions-table').on('click', 'a.editor_remove', function (e) {
             e.preventDefault();
-            $('#questionId').val($(this).closest('tr').children('td:first').text());
+
+            let id = $(this).closest('tr').children('td:first').text();
+            id = parseInt(id);
+
+            $('#questionId').val(id);
+
+            if(parseInt(id) > 0){
+                /**
+                 * Get all information from ajax
+                 */
+                $.ajax({
+                    url: "/api/v1/questions/get/" + id,
+                    type: "get",
+                    dataType: "json",
+                    success: function(data){
+                       $('#hasAnswer').val(data.question.hasAnswer);
+                    },
+                    error: function(err){}
+                });
+            }
+
+
         } );
 
         $('#questions-table').DataTable( {
@@ -102,6 +123,35 @@ class Questions {
 
         $('#createQuestionModal').on('shown.bs.modal', function (e) {
 
+            if($('#has_answer').val() == 'true'){
+                $('#createQuestionModal').modal('toggle');
+
+                $('.notifications').html('<div class="alert alert-danger alert-dismissible fade show"' +
+                    ' role="alert">\n' +
+                    '<div class="message">This question cannnot be edited because there is answers' +
+                    ' associated.</div>\n' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                    '<span aria-hidden="true">&times;</span>\n' +
+                    '</button>\n' +
+                    '</div>');
+            }
+
+        });
+
+        $('#deleteQuestionModal').on('shown.bs.modal', function (e) {
+
+            if($('#hasAnswer').val() == 'true'){
+                $('#deleteQuestionModal').modal('toggle');
+
+                $('.notifications').html('<div class="alert alert-danger alert-dismissible fade show"' +
+                    ' role="alert">\n' +
+                    '<div class="message">This question cannnot be deleted because there is answers' +
+                    ' associated.</div>\n' +
+                    '<button type="button" class="close" data-dismiss="alert" aria-label="Close">\n' +
+                    '<span aria-hidden="true">&times;</span>\n' +
+                    '</button>\n' +
+                    '</div>');
+            }
         });
 
         $(document).on('click', '.btn-add', function(e)
@@ -148,11 +198,14 @@ class Questions {
     }
 
     static populateQuestionForm(data){
+
         $("#id").val(data.question.id);
         $("#answer_type_metadata_id").val(data.question.answer_type_metadata_id);
         $('#question_text').val(data.question.question_text);
         $('#is_mandatory').prop('checked', data.question.is_mandatory == 1);
         $('#answer_structure_id').val(data.question.answer_structure_id);
+        $('#has_answer').val(data.question.hasAnswer);
+
 
         if($.inArray(data.question.answer_structure_id, [4, 5]) != -1){
             $('.entry').show();

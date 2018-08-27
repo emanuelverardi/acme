@@ -1,6 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/css/controlpanel.css": "/css/controlpanel.css",
+    "/css/user-response.css": "/css/user-response.css",
     "/js/jquery.dataTables.min.js": "/js/jquery.dataTables.min.js",
     "/css/jquery.dataTables.min.css": "/css/jquery.dataTables.min.css"
 }

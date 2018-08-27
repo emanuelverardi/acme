@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="en">
-@include('includes.head')
+@include('controlpanel.includes.head')
 <body>
-@include('controlpanel.includes.header-cp')
+@include('controlpanel.includes.header')
 <div class="container-fluid">
     <div class="row">
     @include('controlpanel.includes.innernav')
     @yield('content')
     </div>
 </div>
-@include('includes.footer')
-@include('includes.footer-scripts')
+@include('controlpanel.includes.footer')
+@include('controlpanel.includes.footer-scripts')
 </body>
 </html>
 

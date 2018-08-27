@@ -23,7 +23,14 @@ class RedirectIfAuthenticated
                 $request->session()->flash('error', 'This user is not allowed to access the controlpanel');
             }
 
-            return Auth::user()->isAdmin() ? redirect('/controlpanel/dashboard') : redirect('/user-response/');
+            if(Auth::user()->isAdmin()){
+
+                if($request->get('r') && $request->get('r') == 'ur'){
+                    return redirect('/user-response');
+                }else{
+                    return redirect('/controlpanel/dashboard');
+                }
+            }
         }
 
         return $next($request);

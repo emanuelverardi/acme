@@ -73,4 +73,13 @@ class QuestionRepository implements QuestionInterface
         return $this->questionModel->destroy($questionId);
     }
 
+    /**
+     * Get Total questions
+     * @return mixed
+     */
+    public function getTotalQuestions()
+    {
+        return $this->questionModel->count();
+    }
+
 }

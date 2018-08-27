@@ -37,4 +37,10 @@ interface QuestionInterface
      */
     public function delete($questionId);
 
+    /**
+     * Get the
+     * @return mixed
+     */
+    public function getTotalQuestions();
+
 }

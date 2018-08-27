@@ -23,7 +23,7 @@
             <h4 class="my-0 font-weight-normal">User Response Area</h4>
         </div>
         <div class="card-body">
-            <a href="{{ url('/login') }}" class="btn btn-lg btn-block btn-primary">Go to User Area</a>
+            <a href="{{ url('/login?r=ur') }}" class="btn btn-lg btn-block btn-primary">Go to User Area</a>
         </div>
     </div>
 

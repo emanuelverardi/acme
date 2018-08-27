@@ -23,6 +23,5 @@ class RoleTableSeeder extends Seeder
                 'description' => 'Super User Administrator',
             ],
         ]);
-
     }
 }

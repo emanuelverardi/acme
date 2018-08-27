@@ -25,7 +25,5 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //Binding the Interface with Implementation of Tickets4Sale.
-        //$this->app->singleton(QuestionInterface::class, QuestionRepository::class);
     }
 }
