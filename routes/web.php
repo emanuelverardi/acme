@@ -45,6 +45,10 @@ Route::group(['prefix' => '/controlpanel', 'namespace' => 'ControlPanel', 'middl
         return view('controlpanel.empty');
     })->name('Users');
 
+    Route::get('/passport', function(){
+        return view('controlpanel.passport');
+    })->name('Passport');
+
 });
 
 Route::group(['prefix' => '/user-response', 'namespace' => 'UserResponse', 'middleware' => ['auth', 'minifyHtml']],

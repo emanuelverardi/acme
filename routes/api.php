@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('api')->prefix('v1')->namespace('Api\V1')->group(function () {
+Route::middleware(['api','auth:api'])->prefix('v1')->namespace('Api\V1')->group(function () {
 
     /**
      * Question Routes

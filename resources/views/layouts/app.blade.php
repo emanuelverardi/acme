@@ -4,10 +4,8 @@
 @include('user-response.includes.head')
 
 <body>
-    <div id="app">
-
         @include('user-response.includes.header')
-
+        <div id="app">
         <main class="py-4 container">
             @yield('content')
         </main>
