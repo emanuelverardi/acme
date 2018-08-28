@@ -49924,17 +49924,10 @@ var Dashboard = function () {
 
         this.params = params;
         this.iniDashboard();
-        this.initToken();
     }
 
     _createClass(Dashboard, [{
-        key: 'initToken',
-        value: function initToken() {
-            var authorization = 'Bearer ' + this.params.access_token.replace(/\"/g, "");
-            $.ajaxSetup({ headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'), 'Authorization': authorization } });
-        }
-    }, {
-        key: 'iniDashboard',
+        key: "iniDashboard",
         value: function iniDashboard() {
 
             $.ajax({
